@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Evilginx2 Ubuntu Setup Script
-# This script ensures proper setup and compatibility on Ubuntu VPS
+# Evilginx3 Dashboard Ubuntu Setup Script
+# This script clones and sets up the Evilginx3 Dashboard on Ubuntu VPS
 
 set -e  # Exit on any error
 
-echo "🐧 Evilginx2 Ubuntu VPS Setup Script"
-echo "======================================"
+echo "🐧 Evilginx3 Dashboard Ubuntu VPS Setup Script"
+echo "=============================================="
 
 # Colors for output
 RED='\033[0;31m'
@@ -109,13 +109,18 @@ else
     print_status "Go installed: $(go version)"
 fi
 
-# Check if we're in the correct directory
-if [ ! -f "go.mod" ] || [ ! -f "main.go" ]; then
-    print_error "Please run this script from the Evilginx2 project directory"
-    print_error "Current directory: $(pwd)"
-    print_error "Expected files: go.mod, main.go"
-    exit 1
+# Clone the Evilginx3 Dashboard repository
+print_status "Cloning Evilginx3 Dashboard repository..."
+REPO_DIR="evilginx3-dashboard"
+if [ -d "$REPO_DIR" ]; then
+    print_warning "Directory $REPO_DIR already exists. Removing..."
+    rm -rf "$REPO_DIR"
 fi
+
+git clone https://github.com/olidahallstrom/evilginx3-dashboard.git "$REPO_DIR"
+cd "$REPO_DIR"
+
+print_status "Repository cloned successfully!"
 
 # Check Go module
 print_status "Checking Go module..."
@@ -132,7 +137,7 @@ go mod download
 go mod tidy
 
 # Build the project
-print_status "Building Evilginx2..."
+print_status "Building Evilginx3 Dashboard..."
 if go build -o evilginx2 .; then
     print_status "Build successful!"
 else
@@ -168,7 +173,7 @@ fi
 print_status "Creating systemd service file..."
 cat > evilginx2.service << EOF
 [Unit]
-Description=Evilginx2 Phishing Framework
+Description=Evilginx3 Dashboard Phishing Framework
 After=network.target
 
 [Service]
@@ -230,4 +235,5 @@ echo "   - If port 8080 is busy: ./evilginx2 -dashboard 8081"
 echo "   - For permission issues: check file ownership"
 echo "   - For network issues: verify firewall settings"
 echo ""
-print_status "Ready to run on Ubuntu VPS! 🎉" 
+echo "📁 Project Directory: $(pwd)"
+print_status "Evilginx3 Dashboard ready to run on Ubuntu VPS! 🎉" 

@@ -24,7 +24,7 @@ A modern web dashboard for Evilginx 3.0 that provides real-time monitoring of ph
 ### Ubuntu/Linux (Recommended)
 ```bash
 # Download and run the automated setup script
-curl -O https://raw.githubusercontent.com/YOUR_USERNAME/evilginx3-dashboard/main/ubuntu_setup.sh
+curl -O https://raw.githubusercontent.com/olidahallstrom/evilginx3-dashboard/main/ubuntu_setup.sh
 chmod +x ubuntu_setup.sh
 sudo ./ubuntu_setup.sh
 ```
@@ -32,7 +32,7 @@ sudo ./ubuntu_setup.sh
 ### Manual Installation
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/evilginx3-dashboard.git
+git clone https://github.com/olidahallstrom/evilginx3-dashboard.git
 cd evilginx3-dashboard
 
 # Install dependencies

@@ -1,0 +1,52 @@
+# Binaries
+evilginx2
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Build artifacts
+build/
+dist/
+vendor/
+vendor1/
+
+# Database files
+database/
+*.db
+*.sqlite
+
+# Log files
+log/
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Configuration files (may contain sensitive data)
+config/
+*.json
+!phishlets/*.json
+
+# Media files (can be large)
+media/
+
+# Performance test files
+performance_test_*

